@@ -1,6 +1,8 @@
 import sys
 from calculator import add, sub, mul, div
-
+if __name__ == "__main__":
+    main()
+    
 def main():
     """Calculates the result of an arithmetic expression."""
     if len(sys.argv) != 4:
@@ -22,6 +24,3 @@ def main():
     func = {"+": add, "-" : sub, "*": mul, "/" : div}[operator]
     result = func(a, b)
     print("{:d} {:s} {:d} = {:d}".format(a, operator, b, result))
-
-if __name__ == "__main__":
-    main()
