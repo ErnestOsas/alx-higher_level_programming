@@ -4,13 +4,8 @@ if __name__ == "__main__":
     """Print the number of and list of arguments."""
     import sys
 
-    count = len(sys.argv) - 1
-    if count == 0:
-        print("0 arguments.")
-    elif count == 1:
-        print("1 argument:")
-    else:
-        print("{} arguments:".format(count))
-    for i in range(count):
-        print("{}: {}".format(i + 1, sys.argv[i + 1]))
-
+    args = sys.argv[1:] # exclude the script name
+    count = len(args)
+    print(f"{count} argument{'s' if count != 1 else ''}.") # use f-string and conditional expression
+    for i, arg in enumerate(args, 1): # use enumerate to get index and value
+        print(f"{i}: {arg}") # use f-string
