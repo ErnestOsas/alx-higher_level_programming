@@ -1,12 +1,25 @@
-import sys
+#include <Python.h>
 
-def print_python_list_info(p):
-    """Prints basic info about Python lists."""
-    size = len(p)
-    alloc = sys.getsizeof(p)
+/**
+ * print_python_list_info - Prints basic info about Python lists.
+ * @p: A PyObject list.
+ */
+void print_python_list_info(PyObject *p)
+{
+	int size, alloc, i;
+	PyObject *obj;
 
-    print(f"[*] Size of the Python List = {size}")
-    print(f"[*] Allocated = {alloc}")
+	size = Py_SIZE(p);
+	alloc = ((PyListObject *)p)->allocated;
 
-    for i, obj in enumerate(p):
-        print(f"Element {i}: {type(obj).__name__}")
+	printf("[*] Size of the Python List = %d\n", size);
+	printf("[*] Allocated = %d\n", alloc);
+
+	for (i = 0; i < size; i++)
+	{
+		printf("Element %d: ", i);
+
+		obj = PyList_GetItem(p, i);
+		printf("%s\n", Py_TYPE(obj)->tp_name);
+	}
+}
