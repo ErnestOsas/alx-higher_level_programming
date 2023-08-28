@@ -16,5 +16,5 @@ def list_division(my_list_1, my_list_2, list_length):
             print("out of range")
             divi = 0
         finally:
-            neu_liste.append(r)
+            neu_liste.append(divi)
     return neu_liste
