@@ -1,16 +1,10 @@
 #!/usr/bin/python3
 def read_lines(filename="", nb_lines=0):
-    """reads n lines of a text file
-    Args:
-        filename(str): filename
-        nb_lines(int): number of lines in file
-    """
-    i = 0
-    with open(filename, mode="r", encoding="utf-8") as a_file:
-        if nb_lines <= 0:
-            print(a_file.read(), end="")
+    """ function reads n lines of a text file (UTF8) prints it stdout """
+
+    with open(filename, encoding='utf-8') as f:
+        lines = f.readlines()
+        if nb_lines <= 0 or nb_lines >= len(lines):
+            [print(i, end='') for i in lines]
         else:
-            for a_line in a_file:
-                if i < nb_lines:
-                    print(a_line, end="")
-                i += 1
+            [print(lines[i], end='') for i in range(0, nb_lines)]
